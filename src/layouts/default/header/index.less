@@ -1,0 +1,44 @@
+@header-prefix-cls: ~'@{namespace}-layout-header';
+
+.@{header-prefix-cls} {
+    display: flex;
+    height: @header-height;
+    padding: 0;
+    margin-left: -1px;
+    line-height: @header-height;
+    color: @white;
+    background-color: @white;
+    align-items: center;
+    justify-content: space-between;
+
+    &--fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: @layout-header-fixed-z-index;
+        width: 100%;
+    }
+
+    &-logo {
+        height: @header-height;
+        min-width: 192px;
+        padding: 0 10px;
+        font-size: 14px;
+
+        img {
+            width: @logo-width;
+            height: @logo-width;
+            margin-right: 2px;
+        }
+    }
+
+    &--light {
+        .@{header-prefix-cls}-logo {
+            color: @text-color-base;
+    
+            &:hover {
+              background-color: @header-light-bg-hover-color;
+            }
+        }
+    }
+};
