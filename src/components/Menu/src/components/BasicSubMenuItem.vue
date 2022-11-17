@@ -1,11 +1,11 @@
 <template>
   <!-- 是否有子集,以及菜单是否显示 -->
   <BasciMenuItem v-if="!menuHasChildren(item) && getShowMenu" :item="item"></BasciMenuItem>
-  <a-sub-menu v-if="menuHasChildren(item) && getShowMenu" :key="`submenu-${item.path}`">
+  <a-sub-menu v-if="menuHasChildren(item) && getShowMenu" :key="`submenu-${item.id}`">
     <template #title>
       <MenuItemContent :item="item"></MenuItemContent>
     </template>
-    <template v-for="chilrenItem in item.children || []" :key="chilrenItem.path">
+    <template v-for="chilrenItem in item.children || []" :key="chilrenItem.id">
       <BasicSubMenuItem :item="chilrenItem" />
     </template>
   </a-sub-menu>

@@ -7,56 +7,56 @@
 
   export default defineComponent({
     setup() {
-      // const back = [
-      //   {
-      //     title: 'dashboard',
-      //     hideChildrenInMenu: true,
-      //     icon: 'bx:bx-home',
-      //     meta: {
-      //       title: 'routes.dashboard.dashboard',
-      //       hideChildrenInMenu: true,
-      //       icon: 'bx:bx-home',
-      //     },
-      //     name: 'dashboard',
-      //     hideMenu: false,
-      //     path: '/dashboard',
-      //     redirect: '/dashboard/analysis',
-      //     children: [
-      //       {
-      //         hideMenu: true,
-      //         hideBreadcrumb: true,
-      //         title: 'routes.dashboard.analysis',
-      //         currentActiveMenu: '/dashboard',
-      //         icon: 'bx:bx-home',
-      //         meta: {
-      //           hideMenu: true,
-      //           hideBreadcrumb: true,
-      //           title: 'routes.dashboard.analysis',
-      //           currentActiveMenu: '/dashboard',
-      //           icon: 'bx:bx-home',
-      //         },
-      //         name: 'analysis',
-      //         path: '/dashboard/analysis',
-      //       },
-      //       {
-      //         hideMenu: true,
-      //         hideBreadcrumb: true,
-      //         title: 'routes.dashboard.workbench',
-      //         currentActiveMenu: '/dashboard',
-      //         icon: 'bx:bx-home',
-      //         meta: {
-      //           hideMenu: true,
-      //           hideBreadcrumb: true,
-      //           title: 'routes.dashboard.workbench',
-      //           currentActiveMenu: '/dashboard',
-      //           icon: 'bx:bx-home',
-      //         },
-      //         name: 'workbench',
-      //         path: '/dashboard/workbench',
-      //       },
-      //     ],
-      //   },
-      // ];
+      const back = [
+        {
+          title: 'dashboard',
+          hideChildrenInMenu: true,
+          icon: 'bx:bx-home',
+          meta: {
+            title: 'routes.dashboard.dashboard',
+            hideChildrenInMenu: true,
+            icon: 'bx:bx-home',
+          },
+          name: 'dashboard',
+          hideMenu: false,
+          path: '/dashboard',
+          redirect: '/dashboard/analysis',
+          children: [
+            {
+              hideMenu: true,
+              hideBreadcrumb: true,
+              title: 'routes.dashboard.analysis',
+              currentActiveMenu: '/dashboard',
+              icon: 'bx:bx-home',
+              meta: {
+                hideMenu: true,
+                hideBreadcrumb: true,
+                title: 'routes.dashboard.analysis',
+                currentActiveMenu: '/dashboard',
+                icon: 'bx:bx-home',
+              },
+              name: 'analysis',
+              path: '/dashboard/analysis',
+            },
+            {
+              hideMenu: true,
+              hideBreadcrumb: true,
+              title: 'routes.dashboard.workbench',
+              currentActiveMenu: '/dashboard',
+              icon: 'bx:bx-home',
+              meta: {
+                hideMenu: true,
+                hideBreadcrumb: true,
+                title: 'routes.dashboard.workbench',
+                currentActiveMenu: '/dashboard',
+                icon: 'bx:bx-home',
+              },
+              name: 'workbench',
+              path: '/dashboard/workbench',
+            },
+          ],
+        },
+      ];
 
       const go = useGo();
 

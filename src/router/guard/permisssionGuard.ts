@@ -42,15 +42,24 @@ export function createPermissionGuard(router: Router) {
           redirect: to.path,
         };
         next(redirectData);
+        return;
       }
     }
 
+    if (permissionStore.getIsDynamicAddedRoute) {
+      next();
+      return;
+    }
+
     const routes = await permissionStore.buildRoutesAction();
+    console.log(to);
+    console.log(from);
+    // console.log(routes);
+    permissionStore.setDynamicAddedRoute(true);
 
     routes.forEach((route) => {
       router.addRoute(route as unknown as RouteRecordRaw);
     });
-
-    next();
+    next({ path: to.path });
   });
 }

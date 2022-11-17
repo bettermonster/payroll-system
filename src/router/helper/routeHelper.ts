@@ -34,12 +34,12 @@ export function transformObjToRoute(menus: UpMenu[]): RouteRecordRaw[] {
 
 export function getRouteData(MenuItem: UpMenu): RouteRecordRaw {
   const { menuId, menuName, menuIcon, funcId, funcUrl, children, upMenuId } = MenuItem;
-  const path = '/' + (funcUrl || menuId);
+  // const path = '/' + (funcUrl || menuId);
   //   可能带有参数
   const route: RouteRecordRaw = {
-    path: path,
+    path: '',
     name: menuId,
-    component: funcUrl ? LAYOUT : LAYOUT,
+    component: undefined,
     meta: {
       id: menuId,
       title: menuName,
@@ -50,35 +50,23 @@ export function getRouteData(MenuItem: UpMenu): RouteRecordRaw {
     children: children || [],
   };
 
+  // const externalLink = /^https?:\/\//;
+  // 外链（iframe方式打开）匹配正则
+  // const iframeLink = /^iframelink=https?/;
+  if (funcUrl) {
+    route.path = '/' + funcUrl;
+    route.component = () => import('/@/pages/workflow/bench/todo/todo.vue');
+    // 存在即表示叶子节点
+    // if (externalLink.test(path)) {
+    //   route.component = () => import('/@/views/sys/login/login.vue');
+    // } else if (iframeLink.test(path)) {
+    //   route.component = () => import('/@/views/sys/login/login.vue');
+    // } else {
+    //   route.component = () => import('/@/views/sys/login/login.vue');
+    // }
+  } else {
+    route.path = '/' + menuId;
+    route.component = LAYOUT;
+  }
   return route;
 }
-
-// // 是否对象中
-// function looseEqual(t, r) {
-//   if (t === r) return !0;
-//   var e = isObject(t),
-//     n = isObject(r);
-//   if (!e || !n) return !e && !n && String(t) === String(r);
-//   try {
-//     var i = Array.isArray(t),
-//       o = Array.isArray(r);
-//     if (i && o)
-//       return (
-//         t.length === r.length &&
-//         t.every(function (e, t) {
-//           return looseEqual(e, r[t]);
-//         })
-//       );
-//     if (i || o) return !1;
-//     var a = Object.keys(t),
-//       s = Object.keys(r);
-//     return (
-//       a.length === s.length &&
-//       a.every(function (e) {
-//         return looseEqual(t[e], r[e]);
-//       })
-//     );
-//   } catch (e) {
-//     return !1;
-//   }
-// }

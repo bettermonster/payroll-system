@@ -5,6 +5,7 @@ import { RouteRecordRaw } from 'vue-router';
 import { transformObjToRoute } from '/@/router/helper/routeHelper';
 import { Menu } from '/@/router/types';
 import { transformRouteToMenu } from '/@/router/helper/menuHelper';
+import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
 
 interface PermissionState {
   // 权限代码列表
@@ -51,7 +52,7 @@ export const usePermissionStore = defineStore({
     async buildRoutesAction() {
       let routeList: RouteRecordRaw[] = [];
       const menuAndContr = await getMenuandcontrFn();
-      console.log(menuAndContr);
+      // console.log(menuAndContr);
       // 数组到路由结构
       routeList = transformObjToRoute(menuAndContr.menu);
 
@@ -59,8 +60,9 @@ export const usePermissionStore = defineStore({
       const backMenuList = transformRouteToMenu(routeList);
       this.setBackMenuList(backMenuList);
 
-      console.log(routeList);
-      console.log(backMenuList);
+      routeList = [...routeList];
+      // console.log(routeList);
+      // console.log(backMenuList);
       return routeList;
     },
   },
